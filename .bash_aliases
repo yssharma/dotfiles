@@ -32,3 +32,38 @@ alias gsp='git stage -p'
 alias gch='git checkout'
 
 alias ge='goop exec'
+
+
+alias bashrc="vim ~/.bash_profile; source ~/.bash_profile"
+
+# Show Git branch in prompt.
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+
+alias .1='cd ../'
+alias ..='cd ../'
+alias cd..='cd ../'
+alias .2='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+alias tmp='cd /tmp'
+alias mkcd='_(){ mkdir $1; cd $1; }; _'
+
+alias webshare='python -m SimpleHTTPServer'
+
+# Typo check
+alias sl=ls
+
+alias ll='ls -al'
+
+alias histgrep='history | grep'
+alias psgrep='ps -ef | grep'
+
+# Use multiple versions of java #
+use-java () {
+    export JAVA_HOME=`/usr/libexec/java_home -v 1.$1`
+}
